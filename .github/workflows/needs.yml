@@ -10,6 +10,7 @@ jobs:
 
   job2:
     name: World!
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - run: echo "world!"
