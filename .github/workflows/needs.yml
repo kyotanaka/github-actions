@@ -1,0 +1,17 @@
+name: flow control
+on: push
+
+jobs:
+  job1:
+    name: Hello
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello "
+
+  job2:
+    name: World!
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "world!"
+
+  
