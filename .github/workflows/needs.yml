@@ -5,14 +5,25 @@ jobs:
   job1:
     name: Hello
     runs-on: ubuntu-latest
+    outputs:
+      output: ${{ steps.step1.outputs.test }}
     steps:
-      - run: echo "Hello "
+      - id: step1
+        run: echo "::set-output name=test::Hello"
 
   job2:
     name: World!
-    needs: job1
+    runs-on: ubuntu-latest
+    outputs:
+      output: ${{ steps.step2.outputs.test }}
+    steps:
+      - id: step2
+        run: echo "::set-output name=test::World!"
+  
+  job3:
+    name: Hello World!
     runs-on: ubuntu-latest
     steps:
-      - run: echo "world!"
+      - run: echo ${{needs.job1.outputs.output}} ${{needs.job2.outputs.output}}
 
   
