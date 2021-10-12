@@ -23,6 +23,7 @@ jobs:
   job3:
     name: Hello World!
     runs-on: ubuntu-latest
+    needs: [job1, job2]
     steps:
       - run: echo ${{needs.job1.outputs.output}} ${{needs.job2.outputs.output}}
 
